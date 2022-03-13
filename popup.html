@@ -2,9 +2,47 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div id='formatting'>
+    <div id='profileoutput' class="unrender">
+        <div class='header'>
+            <div id='profilename'>Click on the gear to create a profile.</div>
+            <div id='settings'><i class="fa fa-cog" aria-hidden="true"></i></div>
+        </div>
+        <div id='profileinfo'>
+            <div id='profileinfoerror'>
+                No saved user info stored: please create a profile by clicking on the gear and filling out the form.
+            </div>
+        </div>
+    </div>
+    <div id='profileinput'>
+        <div class='header'>
+            <div>Click on the ID card to view your profile information.</div>
+            <div id='profilecard'><i class="fa fa-id-card" aria-hidden="true"></i></div>
+        </div>
+
+        <div id='profileinfoinput'>
+            <div id='profilename'>
+                Profile name:&nbsp;
+                <input id='profilenameinput' placeholder='Enter your profile name here.'></input>
+            </div>
+
+            <div id='profilelinks'>
+                <div class='linkentry'>Link 1:&nbsp;<input id='link1' placeholder='Enter your link here.'></input></div>
+            </div>
+
+            <div id='profilelinkadd'>
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+                Add another link
+            </div>
+
+            <div id='profilesave'>
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
+                Save Profile
+            </div>
+        </div>
     </div>
   </body>
+  <script src="popup.js"></script>
 </html>
