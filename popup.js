@@ -12,11 +12,58 @@ function addlinkentry() {
     linkentrytoappend.innerHTML = linkname;
     linkentrytoappend.append(linkinputtoappend);
     document.getElementById('profilelinks').append(linkentrytoappend);
-    console.log(linkamount);
+}
+
+function savedata(){
+    let cookieprofile = document.getElementById('profilenameinput').value;
+    let cookielinkarray = [];
+    for (let i = 0; i < startingLinkAmount; i++){
+        cookielinkarray.push(document.getElementById('link' + (i + 1)).value);
+    }
+    document.cookie = "profile=" + JSON.stringify({profilename: cookieprofile, links: cookielinkarray});
+    console.log(document.cookie);
+}
+
+function viewprofile(){
+    document.getElementById('profileoutput').setAttribute('class', '');
+    document.getElementById('profileinput').setAttribute('class', 'unrender');
+}
+
+function viewsettings(){
+    document.getElementById('profileinput').setAttribute('class', '');
+    document.getElementById('profileoutput').setAttribute('class', 'unrender');
+}
+
+function loadprofile() {
+
+    if(document.cookie.match(/^(.*;)?\s*profile\s*=\s*[^;]+(.*)?$/) != null){
+        let json = document.cookie.substring(8);
+        const obj = JSON.parse(json);
+        document.getElementById('cookieprofilename').innerHTML = obj.profilename;
+        let length = obj.links.length;
+        if (length != 0){
+            document.getElementById('profileinfo').innerHTML = "";
+            for (let i = 0; i < length; i++){
+                let linkentrytoappend = document.createElement('div');
+                linkentrytoappend.innerHTML=obj.links[i];
+                document.getElementById('profileinfo').append(linkentrytoappend);
+            }
+        }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('profilelinkadd').addEventListener('click', function() {
         addlinkentry();
+    });
+    document.getElementById('profilesave').addEventListener('click', function() {
+        savedata();
+    });
+    document.getElementById('settings').addEventListener('click', function() {
+        viewsettings();
+    });
+    document.getElementById('profilecard').addEventListener('click', function() {
+        viewprofile();
+        loadprofile();
     });
 });

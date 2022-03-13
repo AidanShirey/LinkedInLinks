@@ -3,7 +3,10 @@
     "description": "Easily copy/paste linkedin field information",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions": ["activeTab", "scripting"],
+    "host_permissions": [
+        "*://*.google.com"
+    ],
+    "permissions": ["activeTab", "scripting", "cookies"],
     "action":{
         "default_popup": "popup.html"
     }

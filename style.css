@@ -13,6 +13,7 @@
 
 #settings {
   margin-left: auto;
+  cursor: pointer;
   font-size: 1.5rem;
 }
 
@@ -24,6 +25,7 @@
 
 #profilecard {
   margin-left: auto;
+  cursor: pointer;
   font-size: 1.5rem;
 }
 
