@@ -20,7 +20,9 @@ function savedata(){
     for (let i = 0; i < startingLinkAmount; i++){
         cookielinkarray.push(document.getElementById('link' + (i + 1)).value);
     }
-    document.cookie = "profile=" + JSON.stringify({profilename: cookieprofile, links: cookielinkarray});
+    var CookieDate = new Date;
+    CookieDate.setFullYear(CookieDate.getFullYear() + 100);
+    document.cookie = "profile=" + JSON.stringify({profilename: cookieprofile, links: cookielinkarray}) + '; expires=' + CookieDate.toUTCString() + ';';
     console.log(document.cookie);
 }
 
@@ -35,7 +37,6 @@ function viewsettings(){
 }
 
 function loadprofile() {
-
     if(document.cookie.match(/^(.*;)?\s*profile\s*=\s*[^;]+(.*)?$/) != null){
         let json = document.cookie.substring(8);
         const obj = JSON.parse(json);
@@ -52,6 +53,8 @@ function loadprofile() {
     }
 }
 
+loadprofile();
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('profilelinkadd').addEventListener('click', function() {
         addlinkentry();
@@ -64,6 +67,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('profilecard').addEventListener('click', function() {
         viewprofile();
-        loadprofile();
     });
 });
