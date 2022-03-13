@@ -23,7 +23,6 @@ function savedata(){
     var CookieDate = new Date;
     CookieDate.setFullYear(CookieDate.getFullYear() + 100);
     document.cookie = "profile=" + JSON.stringify({profilename: cookieprofile, links: cookielinkarray}) + '; expires=' + CookieDate.toUTCString() + ';';
-    console.log(document.cookie);
 }
 
 function viewprofile(){
@@ -67,5 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('profilecard').addEventListener('click', function() {
         viewprofile();
+        loadprofile();
     });
 });
